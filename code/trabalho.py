@@ -4,24 +4,30 @@ class compromisso:
     duracao = None
     descricao = None
 
+agenda = []#Vetor que armazena os compromissos
+
 #Funções
 def incluir():
     while 1:
-        x = compromisso()
-        x.data = input("Data: ")
-        x.hora = input("Hora: ")
-        if x.data in agenda and x.hora in agenda: #Verifica se existem outros compromissos na mesma data e horario
-            op = input("\nJá existem compromissos marcados para a data e horário informados. Salvar mesmo assim?\n(1)Sim\n(2)Não\n")
-            if op == 1:
-                continue
-            elif op == 2:
-                pass
+        print(agenda)
+        c = compromisso()
+        c.data = input("\nData: ")
+        c.hora = input("Hora: ")
+        c.duracao = input("Duração: ")
+        c.descricao = input("Descrição: ")
+        for i in range(len(agenda)):
+            if c.data in agenda[i].data and c.hora in agenda[i].hora:
+                opc = int(input("\nJá existem compromissos marcados para a data e horário informados. Salvar mesmo assim?\n(1)Sim\n(2)Não\n"))
+                if opc == 1:
+                    agenda.append(c)
+                    break
+                elif opc == 2:
+                    pass
+                else:
+                    print("ERRO: Opção inválida.")
+                    break
             else:
-                print("ERRO: Opção inválida.")
-                break
-        x.duracao = input("Duração: ")
-        x.descricao = input("Descrição: ")            
-        agenda.append(x)
+                continue 
         opt = int(input("\nIncluir outro compromisso?\n(1)Sim\n(2)Não\n"))
         if opt == 1:
             continue
@@ -39,4 +45,10 @@ def incluir():
     
 #def listar():
 
-agenda = []#Vetor que armazena os compromissos
+
+while 1:
+    op = int(input("\nAgenda de compromissos\nSelecione uma opção:\n(1)Incluir\n(2)Consultar\n(3)Alterar\n(4)Excluir\n(5)Listar todos\n(6)Sair\n"))
+    if op == 1:
+        incluir()
+    else:
+        break
