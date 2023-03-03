@@ -7,7 +7,7 @@ class compromisso:
 #Funções
 def incluir():
     while 1:
-        print("--INCLUIR COMPROMISSO--")
+        print("\n\n--INCLUIR COMPROMISSO--")
         c = compromisso()
         c.data = input("\nData: ")
         c.hora = input("Hora: ")
@@ -40,7 +40,7 @@ def incluir():
 
 def consultardata():
     while 1:
-        print("--CONSULTAR POR DATA--")
+        print("\n\n--CONSULTAR POR DATA--")
         dt = input("\nDigite a data a ser consultada:\n")
         cont = 0
         for i in range(len(agenda)):
@@ -61,7 +61,7 @@ def consultardata():
 
 def consultardh():
     while 1:
-        print("--CONSULTAR POR DATA E HORA--")
+        print("\n\n--CONSULTAR POR DATA E HORA--")
         dt = input("\nDigite a data a ser consultada:\n")
         hr = input("\nDigite a hora a ser consultada:\n")
         cont = 0
@@ -83,7 +83,7 @@ def consultardh():
 
 def alterar():
     while 1:
-        print("--ALTERAR COMPROMISSOS--")
+        print("\n\n--ALTERAR COMPROMISSOS--")
         dt = input("\nDigite a data do compromisso:\n")
         hr = input("\nDigite a hora do compromisso:\n")
         ind = []
@@ -117,7 +117,7 @@ def alterar():
 
 def excluir():
     while 1:
-        print("--EXCLUIR COMPROMISSOS--")
+        print("\n\n--EXCLUIR COMPROMISSOS--")
         dt = input("\nDigite a data do compromisso:\n")
         hr = input("\nDigite a hora do compromisso:\n")
         ind = []
@@ -149,8 +149,11 @@ def excluir():
             print("\nERRO: Opção inválida.")
             break
     
-#def listar():
-
+def listar():
+    print("\n\n--LISTA DE COMPROMISSOS--\n")
+    for i in range(len(agenda)):
+        print("Data: ", agenda[i].data, "\tHorário: ", agenda[i].hora, "\tDuração: ", agenda[i].duracao, "\tDescrição: ", agenda[i].descricao)
+    x = input("\nPressione enter para continuar:\n")
 agenda = []#Vetor que armazena os compromissos
 
 while 1:
@@ -169,5 +172,10 @@ while 1:
         alterar()
     elif op == 4:
         excluir()
-    else:
+    elif op == 5:
+        listar()
+    elif op == 6:
+        print("\nFinalizando programa...")
         break
+    else:
+        print("\nERRO: Opção inválida.")
