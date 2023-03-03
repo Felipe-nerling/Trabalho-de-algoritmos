@@ -25,7 +25,7 @@ def incluir():
             elif opc == 2:
                 pass
             else:
-                print("ERRO: Opção inválida.")
+                print("\nERRO: Opção inválida.")
         else:
             agenda.append(c)
         opt = int(input("\nIncluir outro compromisso?\n(1)Sim\n(2)Não\n"))
@@ -34,7 +34,7 @@ def incluir():
         elif opt == 2:
             break
         else:
-            print("ERRO: Opção inválida.")
+            print("\nERRO: Opção inválida.")
             break
 
 def consultardata():
@@ -54,7 +54,7 @@ def consultardata():
         elif opt == 2:
             break
         else:
-            print("Opção inválida.")
+            print("\nERRO:Opção inválida.")
             break
 
 def consultardh():
@@ -75,11 +75,39 @@ def consultardh():
         elif opt == 2:
             break
         else:
-            print("Opção inválida.")
+            print("\nERRO: Opção inválida.")
             break
 
-#def alterar():
-    
+def alterar():
+    while 1:
+        dt = input("\nDigite a data do compromisso:\n")
+        hr = input("\nDigite a hora do compromisso:\n")
+        ind = []
+        for i in range(len(agenda)):
+            if agenda[i].data == dt and agenda[i].hora == hr:
+                print("Descrição: ", agenda[i].descricao, "\tHorário: ", agenda[i].hora, "\tDuração: ", agenda[i].duracao)
+                ind.append(i)
+            else:
+                if i == (len(agenda))-1 and len(ind) == 0:
+                    print("Compromisso não encontrado!")
+        if len(ind) > 1:
+            x = input("\nExistem 2 ou mais compromissos agendados nesse horário.\nDigite a descrição do compromisso a ser alterado:\n")
+            for i in range(len(ind)):
+                if agenda[ind[i]].descricao == x:
+                    agenda[ind[i]].descricao = input("\nDigite a nova descrição:\n")
+                    agenda[ind[i]].duracao = input("\nDigite a nova duração:\n")
+                    break
+                elif i == (len(ind))-1:
+                    print("\nERRO: Descrição não encontrada")
+        opt = int(input("\nAlterar outro compromisso?\n(1)Sim\n(2)Não\n"))
+        if opt == 1:
+            continue
+        elif opt == 2:
+            break
+        else:
+            print("\nERRO: Opção inválida.")
+            break
+
 #def excluir():
     
 #def listar():
@@ -97,6 +125,8 @@ while 1:
         elif op2 == 2:
             consultardh()
         else:
-            print("ERRO: Opção inválida.")
+            print("\nERRO: Opção inválida.")
+    elif op == 3:
+        alterar()
     else:
         break
